@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [FileController::class, 'listFiles']);
+Route::get('/', [FileController::class, 'listFiles'])->name('home');
 
 Route::post('upload', [FileController::class, 'upload']);
+
+Route::delete('single-delete/{filename}', [FileController::class, 'singleDelete'])->name('singleDelete');
+
+Route::delete('all-delete', [FileController::class, 'allDelete'])->name('allDelete');

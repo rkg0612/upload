@@ -21,4 +21,24 @@ class FileController extends Controller
         $files = File::allFiles(public_path() . '/uploads');
         return view('files', compact('files'));
     }
+
+    public function singleDelete($filename)
+    {
+        unlink(public_path() . '/uploads/' . $filename);
+        return redirect()->route('home');
+    }
+
+    public function allDelete()
+    {
+        $files = glob(public_path() . '/uploads/*');
+
+        foreach($files as $file)
+        {
+            if(is_file($file)) {
+                unlink($file); // delete file
+            }            
+        }
+
+        return redirect()->route('home');
+    }
 }
