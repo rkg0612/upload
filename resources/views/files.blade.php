@@ -207,7 +207,7 @@
         
 
         <script>
-            var currentViolatorsCount = {{ count($files) }};
+            var currentViolatorsCount = {{ count($filesGroup) }};
 
             $(document).ready(function() {   
                 checkViolators();
