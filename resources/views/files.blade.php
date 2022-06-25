@@ -132,18 +132,8 @@
                                     <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-fw fa-trash"></i> Delete ALL</button>
                                     </form>
                                     @endif
-                                    <!-- Magnific Popup (.js-gallery class is initialized in Helpers.magnific()) -->
-                                    <!-- For more info and examples you can check out http://dimsemenov.com/plugins/magnific-popup/ -->
                                     <div class="row gutters-tiny js-gallery img-fluid-100">
                                         @forelse($files as $key => $file)
-                                        {{-- <li>
-                                            <form action="{{ route('singleDelete', $file->getFileName()) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href="/uploads/{{$file->getFileName()}}" type="button"> {{$file->getFileName()}} </a>  -
-                                            <button type="submit"><i class="fa fa-fw fa-times" style="color: red"></i> Delete</button>
-                                            </form>
-                                        </li> --}}
                                         <div class="col-md-1 col-lg-1 animated fadeIn push">
                                             <a class="img-link img-link-zoom-in img-lightbox" id="{{$key}}" href="/uploads/{{$file->getFileName()}}">
                                                 <div class="options-container">
@@ -168,36 +158,6 @@
                                             <h2 class="font-w700 text-info">No violators yet!</h2>
                                         </div>
                                         @endforelse
-                                        {{-- <div class="col-md-6 col-lg-4 animated fadeIn push">
-                                            <a class="img-link img-link-zoom-in img-lightbox" href="assets/media/photos/photo1@2x.jpg">
-                                                <img class="img-fluid" src="assets/media/photos/photo1.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 animated fadeIn push">
-                                            <a class="img-link img-link-zoom-in img-lightbox" href="assets/media/photos/photo2@2x.jpg">
-                                                <img class="img-fluid" src="assets/media/photos/photo2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 animated fadeIn push">
-                                            <a class="img-link img-link-zoom-in img-lightbox" href="assets/media/photos/photo3@2x.jpg">
-                                                <img class="img-fluid" src="assets/media/photos/photo3.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 animated fadeIn push">
-                                            <a class="img-link img-link-zoom-in img-lightbox" href="assets/media/photos/photo4@2x.jpg">
-                                                <img class="img-fluid" src="assets/media/photos/photo4.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 animated fadeIn push">
-                                            <a class="img-link img-link-zoom-in img-lightbox" href="assets/media/photos/photo5@2x.jpg">
-                                                <img class="img-fluid" src="assets/media/photos/photo5.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 animated fadeIn push">
-                                            <a class="img-link img-link-zoom-in img-lightbox" href="assets/media/photos/photo6@2x.jpg">
-                                                <img class="img-fluid" src="assets/media/photos/photo6.jpg" alt="">
-                                            </a>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

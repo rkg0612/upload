@@ -19,6 +19,7 @@ class FileController extends Controller
     public function listFiles()
     {
         $files = File::allFiles(public_path() . '/uploads');
+        $files = array_reverse($files);
         return view('files', compact('files'));
     }
 
