@@ -142,7 +142,7 @@
                                             $counter++;
                                         @endphp
                                         <div class="col-md-1 col-lg-1 animated fadeIn push">
-                                            <a class="img-link img-link-zoom-in img-lightbox" id="{{$filesKey."-".$key}}" href="/uploads/{{$file->getFileName()}}">
+                                            <a class="img-link img-link-zoom-in img-lightbox" id="{{str_replace(",","",str_replace(" ", "", $filesKey))."-".$key}}" href="/uploads/{{$file->getFileName()}}">
                                                 <div class="options-container">
                                                     <img class="img-fluid options-item" src="/uploads/{{$file->getFileName()}}" alt="">
                                                     <div class="options-overlay bg-black-75">
