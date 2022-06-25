@@ -18,9 +18,15 @@ class FileController extends Controller
 
     public function listFiles()
     {
-        $files = File::allFiles(public_path() . '/uploads');
-        $files = array_reverse($files);
-        return view('files', compact('files'));
+        $files = collect(File::allFiles(public_path() . '/uploads'));
+        $filesGroup = $files
+        ->sortBy(function($file) {
+            return $file->getCtime();
+        })
+        ->groupBy(function($file) {
+            return date('F j, Y', $file->getCtime());
+        });
+        return view('files', compact('filesGroup'));
     }
 
     public function singleDelete($filename)

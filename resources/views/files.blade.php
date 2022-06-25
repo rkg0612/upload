@@ -105,7 +105,6 @@
                 <div class="content">
 
                     <!-- Advanced -->
-                    <h2 class="content-heading">Violators</h2>
                     <div class="row">
                         <div class="col-md-12" id="violation-alert"></div>
                     </div>
@@ -125,13 +124,15 @@
                                     </p>
                                 </div>
                                 <div class="block-content block-content-full">
-                                    @if($files)
+                                    @if($filesGroup->count() > 0)
                                     <form action="{{ route('allDelete') }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-fw fa-trash"></i> Delete ALL</button>
                                     </form>
                                     @endif
+                                    @forelse ($filesGroup as $filesKey => $files)
+                                    <h3 class="content-heading">{{ $filesKey }}</h3>
                                     <div class="row gutters-tiny js-gallery img-fluid-100">
                                         @forelse($files as $key => $file)
                                         <div class="col-md-1 col-lg-1 animated fadeIn push">
@@ -159,6 +160,13 @@
                                         </div>
                                         @endforelse
                                     </div>
+                                    @empty
+                                    <div class="row gutters-tiny js-gallery img-fluid-100">
+                                        <div class="col-md-12 text-center">
+                                            <h2 class="font-w700 text-info">No violators yet!</h2>
+                                        </div>
+                                    </div>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>
