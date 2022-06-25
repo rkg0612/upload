@@ -41,4 +41,9 @@ class FileController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function fileCount()
+    {
+        return count(File::allFiles(public_path() . '/uploads'));
+    }
 }

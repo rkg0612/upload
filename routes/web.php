@@ -20,3 +20,5 @@ Route::post('upload', [FileController::class, 'upload']);
 Route::delete('single-delete/{filename}', [FileController::class, 'singleDelete'])->name('singleDelete');
 
 Route::delete('all-delete', [FileController::class, 'allDelete'])->name('allDelete');
+
+Route::get('file-count', [FileController::class, 'fileCount'])->name('file-count');
