@@ -22,7 +22,7 @@ class FileController extends Controller
         $filesGroup = $files
         ->sortBy(function($file) {
             return $file->getCtime();
-        })
+        }, 'DESC')
         ->groupBy(function($file) {
             return date('F j, Y', $file->getCtime());
         });
