@@ -144,7 +144,7 @@
                                             <button type="submit"><i class="fa fa-fw fa-times" style="color: red"></i> Delete</button>
                                             </form>
                                         </li> --}}
-                                        <div class="col-md-2 col-lg-2 animated fadeIn push">
+                                        <div class="col-md-1 col-lg-1 animated fadeIn push">
                                             <a class="img-link img-link-zoom-in img-lightbox" id="{{$key}}" href="/uploads/{{$file->getFileName()}}">
                                                 <div class="options-container">
                                                     <img class="img-fluid options-item" src="/uploads/{{$file->getFileName()}}" alt="">
