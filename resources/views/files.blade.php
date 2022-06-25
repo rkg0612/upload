@@ -123,6 +123,9 @@
                                         Latest (Left) to Oldest (Right)
                                     </p>
                                 </div>
+                                @php
+                                    $counter = 0;
+                                @endphp
                                 <div class="block-content block-content-full">
                                     @if($filesGroup->count() > 0)
                                     <form action="{{ route('allDelete') }}" method="POST">
@@ -135,6 +138,9 @@
                                     <h3 class="content-heading">{{ $filesKey }}</h3>
                                     <div class="row gutters-tiny js-gallery img-fluid-100">
                                         @forelse($files as $key => $file)
+                                        @php
+                                            $counter++;
+                                        @endphp
                                         <div class="col-md-1 col-lg-1 animated fadeIn push">
                                             <a class="img-link img-link-zoom-in img-lightbox" id="{{$key}}" href="/uploads/{{$file->getFileName()}}">
                                                 <div class="options-container">
@@ -207,7 +213,7 @@
         
 
         <script>
-            var currentViolatorsCount = {{ count($filesGroup) }};
+            var currentViolatorsCount = {{ $counter }};
 
             $(document).ready(function() {   
                 checkViolators();
