@@ -145,6 +145,7 @@
                                             <a class="img-link img-link-zoom-in img-lightbox" id="{{str_replace(",","",str_replace(" ", "", $filesKey)).$key}}" href="/uploads/{{$file->getFileName()}}">
                                                 <div class="options-container">
                                                     <img class="img-fluid options-item" src="/uploads/{{$file->getFileName()}}" alt="">
+                                                    <h6>{{ date('F j, Y G:ia', $file->getCtime() + 28800) }}</h6>
                                                     <div class="options-overlay bg-black-75">
                                                         <div class="options-overlay-content">
                                                             <a class="btn btn-sm btn-primary btn-view" data-id="{{str_replace(",","",str_replace(" ", "", $filesKey)).$key}}" href="javascript:void(0)">
