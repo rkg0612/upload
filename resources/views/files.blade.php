@@ -1,4 +1,7 @@
 @extends('layouts.dashmix')
+@section('style')
+<link rel="stylesheet" href="{{asset('js/plugins/magnific-popup/magnific-popup.css')}}">
+@stop
 @section('content')
 <!-- Advanced -->
 <div class="row">
