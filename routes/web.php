@@ -19,8 +19,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', [FileController::class, 'listFiles'])->name('home');
-
-    Route::post('upload', [FileController::class, 'upload']);
     
     Route::delete('single-delete/{filename}', [FileController::class, 'singleDelete'])->name('singleDelete');
     
@@ -36,4 +34,6 @@ Route::group(['middleware' => 'auth'], function() {
         return redirect()->route('home');
     });
 });
+
+Route::post('upload', [FileController::class, 'upload']);
 
