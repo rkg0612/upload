@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class FileController extends Controller
 {
@@ -52,5 +53,22 @@ class FileController extends Controller
     public function fileCount()
     {
         return count(File::allFiles(public_path() . '/uploads'));
+    }
+
+    public function exportFiles()
+    {
+        $zip = new ZipArchive();
+        $fileName = 'exported_images.zip';
+        if ($zip->open(public_path($fileName), \ZipArchive::CREATE)== TRUE)
+        {
+            $files = File::files(public_path('uploads'));
+            foreach ($files as $key => $value){
+                $relativeName = basename($value);
+                $zip->addFile($value, $relativeName);
+            }
+            $zip->close();
+        }
+
+        return response()->download(public_path($fileName));
     }
 }

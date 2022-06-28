@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +15,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [FileController::class, 'listFiles'])->name('home');
+Auth::routes();
 
-Route::post('upload', [FileController::class, 'upload']);
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', [FileController::class, 'listFiles'])->name('home');
 
-Route::delete('single-delete/{filename}', [FileController::class, 'singleDelete'])->name('singleDelete');
+    Route::post('upload', [FileController::class, 'upload']);
+    
+    Route::delete('single-delete/{filename}', [FileController::class, 'singleDelete'])->name('singleDelete');
+    
+    Route::delete('all-delete', [FileController::class, 'allDelete'])->name('allDelete');
 
-Route::delete('all-delete', [FileController::class, 'allDelete'])->name('allDelete');
+    Route::resource('user', UserController::class);
+    
+    Route::get('file-count', [FileController::class, 'fileCount'])->name('file-count');
 
-Route::get('file-count', [FileController::class, 'fileCount'])->name('file-count');
+    Route::get('export-files', [FileController::class, 'exportFiles'])->name('export-files');
+
+    Route::get('home', function() {
+        return redirect()->route('home');
+    });
+});
+
