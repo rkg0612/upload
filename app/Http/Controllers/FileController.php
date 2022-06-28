@@ -59,6 +59,11 @@ class FileController extends Controller
     {
         $zip = new ZipArchive();
         $fileName = 'exported_images.zip';
+
+        if (file_exists(public_path() . '/exported_images.zip')) {   
+            unlink(public_path() . '/exported_images.zip');
+        }
+
         if ($zip->open(public_path($fileName), \ZipArchive::CREATE)== TRUE)
         {
             $files = File::files(public_path('uploads'));
